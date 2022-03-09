@@ -1,0 +1,9 @@
+welcome: "Welcome to Rock, Paper, Scissors, Spock, Lizard! We'll play best of 3."
+player_win: 'You won!'
+computer_win: 'Computer won!'
+tie: "It's a tie!"
+invalid_choice: "That's not a valid choice."
+congrats: "Congratulations, you're the big winner!"
+whooped: 'Sorry, the computer whooped you.'
+play_again: 'Do you want to play again?'
+goodbye: 'Thank you for playing. Goodbye!'
