@@ -1,0 +1,12 @@
+
+welcome: 'Welcome to Loan Calculator! Enter your name:'
+invalid_name: 'Please enter your name:'
+loan_amount: 'Please enter your loan amount:'
+invalid_loan_amount: "That's not a valid number. Please enter your loan amount:"
+apr: 'Please enter your APR as a percentage (ex. 5.9):'
+invalid_apr: "That's not a valid number. Please enter your APR:"
+loan_duration: 'Please enter your loan duration in years:'
+invalid_loan_duration: "That's not a valid number. Please enter your loan duration in years:"
+calculating: 'Now calculating monthly payments...'
+another_calculation: 'Would you like to calculate another payment? Enter (Y)'
+goodbye: 'Thanks for using Loan Calculator. Goodbye!'
