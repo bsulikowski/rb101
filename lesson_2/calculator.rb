@@ -1,30 +1,43 @@
+require 'yaml'
+MESSAGES = YAML.load_file('calculator_messages.yml')
+
 def prompt(message)
   puts "=> #{message}"
 end
 
-def valid_number?(num)
-  num.to_i.to_s == num
+def integer?(input)
+  input.to_i.to_s == input
+end
+
+def float?(input)
+  input.to_f.to_s == input
+end
+
+def number?(input)
+  integer?(input) || float?(input)
 end
 
 def operation_to_message(op)
-  case op
-  when 'A'
-    'Adding'
-  when 'S'
-    'Subtracting'
-  when 'D'
-    'Dividing'
-  when 'M'
-    'Multiplying'
-  end
+  word = case op
+         when 'A'
+           'Adding'
+         when 'S'
+           'Subtracting'
+         when 'D'
+           'Dividing'
+         when 'M'
+           'Multiplying'
+         end
+
+  word
 end
 
-prompt 'Welcome to Calculator! Enter your name:'
+prompt MESSAGES['welcome']
 name = ''
 loop do
   name = gets.chomp
   break unless name.empty?
-  prompt 'Make sure to use a valid name.'
+  prompt MESSAGES['valid_name']
 end
 
 prompt "Hi #{name}!"
@@ -32,18 +45,18 @@ prompt "Hi #{name}!"
 loop do
   number1 = ''
   loop do
-    prompt "What's the first number?"
+    prompt MESSAGES['first_number']
     number1 = gets.chomp
-    break if valid_number?(number1)
-    prompt "That's not a valid number. Please try again:"
+    break if number?(number1)
+    prompt MESSAGES['invalid_number']
   end
 
   number2 = ''
   loop do
-    prompt "What's the second number?"
+    prompt MESSAGES['second_number']
     number2 = gets.chomp
-    break if valid_number?(number2)
-    prompt "That's not a valid number. Please try again:"
+    break if number?(number2)
+    prompt MESSAGES['invalid_number']
   end
 
   operator_prompt = <<-MSG
@@ -53,13 +66,14 @@ loop do
   D for divide
   or M for multiply
   MSG
+
   prompt operator_prompt
 
   operator = ''
   loop do
     operator = gets.upcase.chomp
     break if %w(A S D M).include?(operator)
-    prompt "Must choose A, S, D, or M:"
+    prompt MESSAGES['invalid_operator']
   end
 
   prompt "#{operation_to_message(operator)} the two numbers..."
@@ -78,9 +92,9 @@ loop do
 
   prompt "The result is #{result}"
 
-  prompt 'Do you want to perform another calculation? (Y to calculate again)'
+  prompt MESSAGES['another_calculation']
   answer = gets.chomp
   break unless answer.upcase == 'Y'
 end
 
-prompt 'Thanks for using Calculator. Goodbye!'
+prompt MESSAGES['goodbye']
