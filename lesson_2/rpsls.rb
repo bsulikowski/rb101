@@ -58,8 +58,8 @@ loop do
 
     display_results(choice, computer_choice)
     sleep 1
-    
-    prompt "The current score is Player: #{player_score}, Computer: #{computer_score}."
+
+    prompt "The score is Player: #{player_score}, Computer: #{computer_score}."
     sleep 1
 
     break if player_score == 3 || computer_score == 3
@@ -67,9 +67,9 @@ loop do
 
   if player_score == 3
     prompt MESSAGES['congrats']
-  else 
+  else
     prompt MESSAGES['whooped']
-  end 
+  end
   sleep 2
 
   prompt MESSAGES['play_again']
